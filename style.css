@@ -1,11 +1,16 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-family: "Playfair Display", serif;
 }
 
 h1 {
   margin: 0px auto;
   display: inline-block;
+}
+
+p {
+  margin: 10px 0px;
 }
 
 #game {
@@ -14,8 +19,10 @@ h1 {
 
 .page {
   display: flex;
+  margin: 10px;
 }
 .aside {
+  padding: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -55,6 +62,10 @@ h1 {
   flex-direction: column;
 }
 
+#gameStart p {
+  margin: 0px;
+}
+
 #gameOver {
   width: 700px;
   height: 474px;
@@ -68,6 +79,10 @@ h1 {
   flex-direction: column;
 }
 
+#gameOver p {
+  margin: 0px;
+}
+
 #gameWin {
   width: 700px;
   height: 474px;
@@ -79,4 +94,8 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+#gameWin p {
+  margin: 0px;
 }

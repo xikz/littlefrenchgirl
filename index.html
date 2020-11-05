@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script src="./p5.sound.js"></script>
+
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
@@ -13,30 +19,38 @@
       <div id="game"></div>
 
       <div id="gameStart">
-        <p>Eating a Francesinha is always a legendary challenge... </p>
-        <p>Good luck and may choleserol be with you!</p>
+        <p>Eating a Francesinha is always a legendary challenge...</p>
+        <p>Good luck and may cholesterol be with you!</p>
         <div id="playButton" class="button">PLAY</div>
-        <p>Arrow keys to move</p>
-        <p>S key to throw</p>
-        <p>Space bar to jump</p>
+        <p>← → to move</p>
+        <p>'S' to throw</p>
+        <p>'Space' to jump</p>
       </div>
 
       <div id="gameOver">
-        <h3>STOP DROWNING IN MELTED CHEESE...</h3> 
-        <h2></h2>FOCUS and eat them all!</h2>
+        <h2>STOP DROWNING IN MELTED CHEESE AND SPICY SAUCE...</h2>
+        <h3>FOCUS and eat them all!</h3>
         <div id="playAgainButton" class="button">PLAY AGAIN</div>
+        <p class="eaten"></p>
+        <p class="kcal"></p>
+        <p class="chol"></p>
       </div>
 
       <div id="gameWin">
         <h2>CONGRATULATIONS</h2>
+        <h3>Shrimpy Boss defeated and on probably having a heart attack...</h3>
         <div id="playAgainButton2" class="button">PLAY AGAIN</div>
+        <p class="eaten"></p>
+        <p class="kcal"></p>
+        <p class="chol"></p>
       </div>
       <div class="aside">
         <div class="history">
           <h2><h1>LITTLE FRENCH GIRL AKA FRANCESINHA</h1></h2>
           <p>
             Francesinha (meaning Little Frenchie or simply Frenchie in
-            Portuguese) is a Portuguese sandwich originally from Porto!
+            Portuguese) is a <b>MASSIVE</b> Portuguese sandwich originally from
+            Porto!
           </p>
 
           <p>
@@ -46,8 +60,10 @@
             served with french fries.
           </p>
         </div>
-        <div class="recipe"></div>
-        <div class="buttons"><div id="playAgain">PLAY AGAIN</div></div>
+        <div class="recipe">
+          <div id="playMusic" class="button">></div>
+          <div id="stopMusic" class="button">| |</div>
+        </div>
       </div>
     </div>
 

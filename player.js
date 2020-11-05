@@ -8,7 +8,7 @@ class Player {
     this.velocity = 0;
     this.jumpCounts = 0;
     this.goingTo = "the right";
-    this.health = 1000;
+    this.health = 500;
     this.image = null;
   }
 

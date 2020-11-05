@@ -9,6 +9,7 @@ class Game {
     this.boss = 0;
     this.bossDefeated = false;
     this.gameOver = false;
+    this.level = "low";
   }
 
   shoot() {
@@ -19,32 +20,32 @@ class Game {
 
   draw() {
     this.background.draw();
-
-    textSize(30);
-    text(`Eaten: ${this.eaten}`, 10, 40);
-
-    text(`KCal`, 10, 70);
+    //eaten
+    textSize(15);
+    text(`Eaten: ${this.eaten}`, 30, 40);
+    //kcal
     if (this.kcal < 90000) {
-      rect(90, 50, 20 + this.kcal / 100, 20);
+      rect(30, 50, 60 + this.kcal / 100, 20);
     } else {
-      rect(90, 50, 900, 20);
+      rect(30, 50, 900, 10);
     }
     textSize(10);
-    text(`${this.kcal}`, 80 + this.kcal / 100, 65);
+    text(`😋 KCal ${this.kcal}`, 35, 63);
 
-    textSize(15);
-    text(`${this.player.health}`, 10, 90);
-    rect(90, 80, 100, 10);
+    //health
+    textSize(10);
+    rect(30, 80, this.player.health, 20);
+    text(`❤️ ${this.player.health}`, 35, 94);
 
     this.player.draw();
 
     if (keyIsDown(39)) {
       this.player.x += 3;
       this.player.goingTo = "the right";
-      if (frameCount % 10 === 0) {
+      if (frameCount % 5 === 0) {
         this.player.image = characterRigthTwo;
       }
-      if (frameCount % 20 === 0) {
+      if (frameCount % 10 === 0) {
         this.player.image = characterRigthOne;
       }
     }
@@ -52,10 +53,10 @@ class Game {
     if (keyIsDown(37)) {
       this.player.x -= 3;
       this.player.goingTo = "the left";
-      if (frameCount % 10 === 0) {
+      if (frameCount % 5 === 0) {
         this.player.image = characterLeftTwo;
       }
-      if (frameCount % 20 === 0) {
+      if (frameCount % 10 === 0) {
         this.player.image = characterLeftOne;
       }
     }
@@ -63,36 +64,41 @@ class Game {
     //GAME LEVEL & GAME OVER & GAME WIN
 
     //game over
-    if (this.player.health <= 999) {
+    if (this.player.health <= 0) {
       this.gameOver = true;
+      this.showGameScore();
       gameOverDiv.style.visibility = "visible";
       noLoop();
     }
 
     //gameWin
-
     if (this.boss.health <= 0) {
       this.bossDefeated = true;
+      this.level = "there is no blood here - Pure Cholesterol!";
+      this.showGameScore();
       gameWinDiv.style.visibility = "visible";
       noLoop();
     }
 
     //game level
     switch (true) {
-      case this.eaten >= 0 && this.eaten <= 2:
-        if (frameCount % this.getRandomArbitrary(120, 120) === 0) {
-          // every 2 seconds, push a new francesinha
-          this.francesinhas.push(new Francesinha());
-        }
-        break;
-      case this.eaten > 2 && this.eaten <= 4:
-        if (frameCount % this.getRandomArbitrary(0, 300) === 0) {
-          this.francesinhas.push(new Francesinha2());
-        }
-        break;
+      //case this.eaten >= 0 && this.eaten <= 2:
+      //  if (frameCount % this.getRandomArbitrary(120, 120) === 0) {
+      //    // every 2 seconds, push a new francesinha
+      //    this.francesinhas.push(new Francesinha());
+      //    this.level = "low";
+      //  }
+      //  break;
+      //case this.eaten > 2 && this.eaten <= 4:
+      //  if (frameCount % this.getRandomArbitrary(0, 300) === 0) {
+      //    this.francesinhas.push(new Francesinha2());
+      //    this.level = "medium";
+      //  }
+      //  break;
 
-      case this.eaten > 4 && this.francesinhas.length === 0 && !this.boss:
+      case this.eaten >= 0 && this.francesinhas.length === 0 && !this.boss:
         this.boss = new FrancesinhaBoss();
+        this.level = "high";
         break;
     }
 
@@ -225,5 +231,24 @@ class Game {
 
   getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  showGameScore() {
+    const eatenPs = document.getElementsByClassName("eaten");
+
+    for (let p of eatenPs) {
+      p.innerHTML = `Eaten Francesinhas: ${this.eaten}`;
+    }
+    const kcalPs = document.getElementsByClassName("kcal");
+
+    for (let p of kcalPs) {
+      p.innerHTML = `Ingested kCal: ${this.kcal}`;
+    }
+
+    const cholPs = document.getElementsByClassName("chol");
+
+    for (let p of cholPs) {
+      p.innerHTML = `Cholesterol Level: ${this.level}`;
+    }
   }
 }

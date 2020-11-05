@@ -17,18 +17,15 @@ class FrancesinhaBoss {
 
   draw() {
     this.attack.forEach((sauce, sauceIdex) => {
+      sauce.draw();
       if (sauce.x + sauce.width < 0) {
         this.attack.splice(sauceIdex, 1);
       }
     });
 
-    if (frameCount % 120 === 0) {
+    if (frameCount % 120 === 0 && this.x < WIDTH - this.width) {
       this.randomAttack();
     }
-
-    this.attack.forEach((sauce) => {
-      sauce.draw();
-    });
 
     if (this.x + this.width > WIDTH - 20) {
       this.x -= 0.5;
