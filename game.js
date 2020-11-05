@@ -65,15 +65,16 @@ class Game {
     //game over
     if (this.player.health <= 999) {
       this.gameOver = true;
+      gameOverDiv.style.visibility = "visible";
+      noLoop();
     }
+
+    //gameWin
 
     if (this.boss.health <= 0) {
-      this.gameOver = true;
-    }
-
-    if (this.gameOver) {
-      return noLoop();
-      document.getElementById("game");
+      this.bossDefeated = true;
+      gameWinDiv.style.visibility = "visible";
+      noLoop();
     }
 
     //game level

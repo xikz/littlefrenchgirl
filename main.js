@@ -21,6 +21,7 @@ function resetGame() {
 function setup() {
   const canvas = createCanvas(WIDTH, HEIGHT);
   canvas.parent("game");
+  noLoop();
 }
 
 function draw() {
@@ -39,15 +40,30 @@ function keyPressed() {
   }
 }
 
+//game start div
 const playButton = document.getElementById("playButton");
 const gameStartDiv = document.getElementById("gameStart");
-const gameEndDiv = document.getElementById("gameEnd");
 
 playButton.onclick = () => {
   gameStartDiv.style.visibility = "hidden";
   resetGame();
 };
 
-playAgain.onclick = () => {};
+//game over div
+const playAgainButton = document.getElementById("playAgainButton");
+const gameOverDiv = document.getElementById("gameOver");
 
-console.log(playAgain);
+console.log(playAgainButton);
+playAgainButton.onclick = () => {
+  gameOverDiv.style.visibility = "hidden";
+  resetGame();
+};
+
+//game over div
+const playAgainButton2 = document.getElementById("playAgainButton2");
+const gameWinDiv = document.getElementById("gameWin");
+
+playAgainButton2.onclick = () => {
+  gameWinDiv.style.visibility = "hidden";
+  resetGame();
+};
