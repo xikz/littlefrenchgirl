@@ -82,21 +82,21 @@ class Game {
 
     //game level
     switch (true) {
-      //case this.eaten >= 0 && this.eaten <= 2:
-      //  if (frameCount % this.getRandomArbitrary(120, 120) === 0) {
-      //    // every 2 seconds, push a new francesinha
-      //    this.francesinhas.push(new Francesinha());
-      //    this.level = "low";
-      //  }
-      //  break;
-      //case this.eaten > 2 && this.eaten <= 4:
-      //  if (frameCount % this.getRandomArbitrary(0, 300) === 0) {
-      //    this.francesinhas.push(new Francesinha2());
-      //    this.level = "medium";
-      //  }
-      //  break;
+      case this.eaten >= 0 && this.eaten <= 3:
+        if (frameCount % this.getRandomArbitrary(120, 120) === 0) {
+          // every 2 seconds, push a new francesinha
+          this.francesinhas.push(new Francesinha());
+          this.level = "low";
+        }
+        break;
+      case this.eaten > 3 && this.eaten <= 6:
+        if (frameCount % this.getRandomArbitrary(0, 300) === 0) {
+          this.francesinhas.push(new Francesinha2());
+          this.level = "medium";
+        }
+        break;
 
-      case this.eaten >= 0 && this.francesinhas.length === 0 && !this.boss:
+      case this.eaten >= 6 && this.francesinhas.length === 0 && !this.boss:
         this.boss = new FrancesinhaBoss();
         this.level = "high";
         break;
