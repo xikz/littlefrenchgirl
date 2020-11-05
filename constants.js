@@ -1,0 +1,13 @@
+WIDTH = 700;
+HEIGHT = 474;
+FLOOR = 350;
+let bgImage;
+let characterLeftOne;
+let characterLeftTwo;
+let characterRigthOne;
+let characterRigthTwo;
+let forkOne;
+let knifeOne;
+let francesinhaOne;
+let francesinhaBossImg;
+let sauceImage;
