@@ -9,6 +9,8 @@ function preload() {
   sB = loadImage("./assets/sb.png");
   forkOne = loadImage("./assets/fork2.png");
   knifeOne = loadImage("./assets/knife1.png");
+  forkOneRight = loadImage("./assets/fork2right.png");
+  knifeOneRight = loadImage("./assets/knife1right.png");
   francesinhaOne = loadImage("./assets/francesinha2d.png");
   francesinhaBossImg = loadImage("./assets/francesinha-camarao.png");
   sauceImage = loadImage("./assets/sauce2.svg");
@@ -20,6 +22,7 @@ function preload() {
   beerSound = loadSound("./assets/beer.mp3");
   sauceSound = loadSound("./assets/sauce.mp3");
   bossMusic = loadSound("./assets/bossMusic.mp3");
+  zipSuperBock = loadSound("./assets/zipCate.m4a");
 }
 
 let game = new Game();

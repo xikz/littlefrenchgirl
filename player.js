@@ -11,12 +11,22 @@ class Player {
     this.health = 500;
     this.image = null;
     this.jumpCount = 0;
+    this.powerUp = 0;
   }
 
   jump() {
     //  remove a value from the velocity so that it emulates the feeling of jumping with already some "force" pulling you down
     this.velocity -= 8;
     this.jumpCount += 1;
+  }
+
+  drinkBeer() {
+    const powerUp = setInterval(function () {
+      game.player.width += 2;
+      game.player.height += 4;
+      console.log("helo");
+    }, 100);
+    return powerUp;
   }
 
   draw() {
@@ -44,6 +54,10 @@ class Player {
 
     if (this.x > WIDTH - this.width) {
       this.x = WIDTH - this.width;
+    }
+
+    if (this.height > 120) {
+      clearInterval(this.powerUp);
     }
 
     image(this.image, this.x, this.y, this.width, this.height);

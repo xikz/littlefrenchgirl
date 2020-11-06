@@ -10,6 +10,7 @@ class Game {
     this.bossDefeated = false;
     this.gameOver = false;
     this.level = "low";
+    this.superbock = 0;
   }
 
   shoot() {
@@ -21,6 +22,7 @@ class Game {
 
     this.bullets.push(newBullet);
 
+    newBullet.imageSelected.sound.setVolume(0.3);
     newBullet.imageSelected.sound.play();
   }
 
@@ -96,14 +98,14 @@ class Game {
 
     //game level
     switch (true) {
-      case this.eaten >= 0 && this.eaten <= 3:
+      case this.eaten >= 0 && this.eaten <= 5:
         if (frameCount % this.getRandomArbitrary(120, 120) === 0) {
           // every 2 seconds, push a new francesinha
           this.francesinhas.push(new Francesinha());
           this.level = "low";
         }
         break;
-      case this.eaten > 3 && this.eaten <= 6:
+      case this.eaten > 5 && this.eaten <= 10:
         if (frameCount % this.getRandomArbitrary(0, 300) === 0) {
           this.francesinhas.push(new Francesinha2());
           this.level = "medium";
@@ -112,16 +114,21 @@ class Game {
 
       case this.eaten >= 6 && this.francesinhas.length === 0 && !this.boss:
         this.boss = new FrancesinhaBoss();
+        this.superbock = new Superbock();
         this.level = "high";
         eatItMusic.pause();
         bossMusic.play();
-        bossMusic.setVolume(0.6);
+        bossMusic.setVolume(0.3);
         break;
     }
 
     //PART 3 - FRANCESINHA BOSS
     if (this.boss) {
       this.boss.draw();
+    }
+
+    if (this.superbock) {
+      this.superbock.draw();
     }
 
     //FRANCESINHAS DRAW
@@ -153,6 +160,16 @@ class Game {
           this.kcal += 633;
         }
       });
+    }
+
+    //colision - player and beer
+    if (this.superbock) {
+      if (this.colisionCheck(this.superbock, this.player)) {
+        this.player.powerUp = this.player.drinkBeer();
+        zipSuperBock.play();
+        this.player.health += 200;
+        this.superbock = 0;
+      }
     }
 
     //Collision - Player & Boss Sauce

@@ -10,22 +10,18 @@ class Bullet {
     this.height = 15;
     this.images = [
       {
-        image: forkOne,
+        imageleft: forkOne,
+        imageright: forkOneRight,
         width: 60,
         height: 40,
         sound: knifeSound,
       },
       {
-        image: knifeOne,
+        imageleft: knifeOne,
+        imageright: knifeOneRight,
         width: 40,
         height: 40,
         sound: knifeSound3,
-      },
-      {
-        image: sB,
-        width: 15,
-        height: 50,
-        sound: beerSound,
       },
     ];
     this.imageSelected = this.imageSelection();
@@ -43,20 +39,26 @@ class Bullet {
       this.x += this.xVelocity;
       this.yVelocity += this.gravity;
       this.y += this.yVelocity;
+      image(
+        this.imageSelected.imageright,
+        this.x,
+        this.y,
+        this.imageSelected.width,
+        this.imageSelected.height
+      );
     }
 
     if (this.playerGoingTo === "the left") {
       this.x -= this.xVelocity;
       this.yVelocity += this.gravity;
       this.y += this.yVelocity;
+      image(
+        this.imageSelected.imageleft,
+        this.x,
+        this.y,
+        this.imageSelected.width,
+        this.imageSelected.height
+      );
     }
-
-    image(
-      this.imageSelected.image,
-      this.x,
-      this.y,
-      this.imageSelected.width,
-      this.imageSelected.height
-    );
   }
 }
