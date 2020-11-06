@@ -10,16 +10,18 @@ class Player {
     this.goingTo = "the right";
     this.health = 500;
     this.image = null;
+    this.jumpCount = 0;
   }
 
   jump() {
     //  remove a value from the velocity so that it emulates the feeling of jumping with already some "force" pulling you down
     this.velocity -= 8;
+    this.jumpCount += 1;
   }
 
   draw() {
     if (!this.image) {
-      this.image = characterRigthOne;
+      this.image = characterRigthTwo;
     }
 
     this.velocity += this.gravity;
@@ -29,6 +31,19 @@ class Player {
       //  we make sure the player wont go father down than the floor
       this.y = FLOOR - this.height;
       this.velocity = 0;
+      this.jumpCount = 0;
+    }
+
+    if (this.y < 0) {
+      this.y = 0;
+    }
+
+    if (this.x < 0) {
+      this.x = 0;
+    }
+
+    if (this.x > WIDTH - this.width) {
+      this.x = WIDTH - this.width;
     }
 
     image(this.image, this.x, this.y, this.width, this.height);

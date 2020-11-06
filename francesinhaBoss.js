@@ -7,6 +7,7 @@ class FrancesinhaBoss {
     this.height = 250;
     this.speed = 1;
     this.attack = [];
+    this.endEntrance = false;
   }
 
   randomAttack() {
@@ -25,6 +26,8 @@ class FrancesinhaBoss {
 
     if (frameCount % 120 === 0 && this.x < WIDTH - this.width) {
       this.randomAttack();
+      sauceSound.play();
+      this.endEntrance = true;
     }
 
     if (this.x + this.width > WIDTH - 20) {

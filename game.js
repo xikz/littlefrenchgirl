@@ -13,9 +13,15 @@ class Game {
   }
 
   shoot() {
-    this.bullets.push(
-      new Bullet(this.player.x, this.player.y, this.player.goingTo)
+    const newBullet = new Bullet(
+      this.player.x,
+      this.player.y,
+      this.player.goingTo
     );
+
+    this.bullets.push(newBullet);
+
+    newBullet.imageSelected.sound.play();
   }
 
   draw() {
@@ -68,15 +74,23 @@ class Game {
       this.gameOver = true;
       this.showGameScore();
       gameOverDiv.style.visibility = "visible";
+      if (!eatItMusic.isPlaying()) {
+        bossMusic.pause();
+        eatItMusic.play();
+      }
+
       noLoop();
     }
 
     //gameWin
     if (this.boss.health <= 0) {
       this.bossDefeated = true;
-      this.level = "there is no blood here - Pure Cholesterol!";
+      this.level = "100% Pure Cholesterol!";
       this.showGameScore();
       gameWinDiv.style.visibility = "visible";
+
+      bossMusic.pause();
+      eatItMusic.play();
       noLoop();
     }
 
@@ -99,6 +113,9 @@ class Game {
       case this.eaten >= 6 && this.francesinhas.length === 0 && !this.boss:
         this.boss = new FrancesinhaBoss();
         this.level = "high";
+        eatItMusic.pause();
+        bossMusic.play();
+        bossMusic.setVolume(0.6);
         break;
     }
 
@@ -120,6 +137,7 @@ class Game {
       if (francesinha.health === 0) {
         this.francesinhas.splice(index, 1);
         this.eaten += 1;
+        swallowSound.play();
       }
     });
 

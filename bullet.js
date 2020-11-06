@@ -13,11 +13,19 @@ class Bullet {
         image: forkOne,
         width: 60,
         height: 40,
+        sound: knifeSound,
       },
       {
         image: knifeOne,
         width: 40,
         height: 40,
+        sound: knifeSound3,
+      },
+      {
+        image: sB,
+        width: 15,
+        height: 50,
+        sound: beerSound,
       },
     ];
     this.imageSelected = this.imageSelection();

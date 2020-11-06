@@ -9,6 +9,10 @@ h1 {
   display: inline-block;
 }
 
+h2 {
+  margin: 10px;
+}
+
 p {
   margin: 10px 0px;
 }
@@ -22,7 +26,7 @@ p {
   margin: 10px;
 }
 .aside {
-  padding: 10px;
+  padding: 10px 40px;
   display: flex;
   flex-direction: column;
 }
@@ -30,7 +34,6 @@ p {
 .button {
   background-color: #ffad0a;
   border-radius: 28px;
-  border: 1px solid #d98e1f;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -49,10 +52,32 @@ p {
   top: 1px;
 }
 
+.musicButtons {
+  background-color: black;
+
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 16px;
+  padding: 10px;
+  text-decoration: none;
+  text-shadow: 0px 0px 0px #2f6627;
+}
+.musicButtons:hover {
+  background-color: #ed7c26;
+}
+.musicButtons:active {
+  position: relative;
+  top: 1px;
+}
+
 #gameStart {
   width: 700px;
   height: 474px;
-  background-color: coral;
+  background: url("./assets/backgroundPro.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
   position: absolute;
   border: 10px solid black;
   visibility: visible;
@@ -86,7 +111,9 @@ p {
 #gameWin {
   width: 700px;
   height: 474px;
-  background-color: green;
+  background: url("./assets/backgroundPro2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
   position: absolute;
   border: 10px solid black;
   visibility: hidden;
@@ -98,4 +125,18 @@ p {
 
 #gameWin p {
   margin: 0px;
+  color: white;
+}
+
+#gameWin h2 {
+  color: white;
+}
+
+#gameWin h3 {
+  color: white;
+}
+
+.coral {
+  color: orangered;
+  font-weight: bold;
 }
