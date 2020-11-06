@@ -17,6 +17,6 @@ class Francesinha {
 class Francesinha2 extends Francesinha {
   constructor() {
     super();
-    this.speed = 3;
+    this.speed = 2;
   }
 }
